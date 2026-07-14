@@ -34,6 +34,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 130px; /* Offsets scroll to prevent headers from being covered by the fixed nav bar */
     }
 
     body {
@@ -449,22 +450,16 @@
     /* ─── PROJECTS ─── */
     .projects-section {
       background: var(--off-white);
-      padding: 60px 24px 60px;
+      padding: 60px 24px 20px;
     }
 
     .section-header {
-      max-width: calc(100% + 48px);
-      width: calc(100% + 48px);
-      margin: 0 -24px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       text-align: center;
-      background: url('proj.png') no-repeat center 80px;
-      background-size: cover;
-      min-height: 500px;
-      padding: 220px 24px 80px;
+      padding: 120px 24px 20px;
     }
 
     .section-title {
@@ -515,113 +510,142 @@
     }
 
     .projects-carousel-container {
-      max-width: calc(100% + 48px);
-      width: calc(100% + 48px);
-      margin: 0 -24px;
-
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
       background: #fff;
-      padding: 80px 0 140px;
+      padding: 45px 24px 50px;
       border-radius: 0;
-      overflow: hidden;
+      overflow: visible;
       position: relative;
     }
 
     .projects-track {
-      display: flex;
-      gap: 32px;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-      padding: 0 50%;
-      width: max-content;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 15px 0 40px;
+      gap: 64px 20px;
     }
 
     .project-card {
       background: #0A0A0A;
-      padding: 40px 36px;
+      padding: 32px 28px 36px;
       position: relative;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 48px;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 32px;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s ease;
       cursor: pointer;
-      min-height: 360px;
-      width: clamp(320px, 80vw, 420px);
+      min-height: 370px;
+      height: auto;
+      width: 420px;
       flex-shrink: 0;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-      transform: scale(0.80);
+      margin: 0;
       will-change: transform, box-shadow;
+      
+      /* Crisp text rendering fixes for transformed elements */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
     }
 
-    .project-card.active {
-      background: #000;
-      transform: scale(1.10) translateY(-20px);
-      box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.6);
-      border-color: rgba(255, 255, 255, 0.25);
+    /* Static positioning for curved cards in 3-column rows (straight, not rotated) */
+    .project-card:nth-child(3n+1) {
+      transform: translate3d(0, 20px, 0) scale(0.92);
+      z-index: 1;
+    }
+    .project-card:nth-child(3n+2) {
+      transform: translate3d(0, -40px, 0) scale(1.0);
+      z-index: 2;
+    }
+    .project-card:nth-child(3n) {
+      transform: translate3d(0, 20px, 0) scale(0.92);
+      z-index: 1;
+    }
+
+    /* Interactive hover flatten & zoom */
+    .project-card:nth-child(3n+1):hover {
+      transform: translate3d(0, 6px, 0) scale(0.98);
       z-index: 10;
-    }
-
-    .project-card:hover {
       border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+    .project-card:nth-child(3n+2):hover {
+      transform: translate3d(0, -54px, 0) scale(1.06);
+      z-index: 10;
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+    .project-card:nth-child(3n):hover {
+      transform: translate3d(0, 6px, 0) scale(0.98);
+      z-index: 10;
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
     }
 
     .card-num {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #85020a;
       font-weight: 800;
       letter-spacing: 1.5px;
-      margin-bottom: 22px;
+      margin-bottom: 12px;
     }
 
     .card-title {
       font-family: var(--font-display);
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: #fff;
       letter-spacing: -0.5px;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: 6px;
     }
 
     .card-sub {
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 18px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 10px;
     }
 
     .card-desc {
-      font-size: 14px;
+      font-size: 13.5px;
       color: rgba(255, 255, 255, 0.85);
-      line-height: 1.65;
+      line-height: 1.5;
       font-weight: 500;
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
 
     .card-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-
+      gap: 5px;
       margin-top: auto;
     }
 
     .card-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #000000;
-
-      padding: 4px 10px;
-      border-radius: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
       background-color: #ffffff;
       font-weight: 500;
     }
 
     /* ─── SKILLS ─── */
     .skills-section {
-      padding: 60px 56px 100px;
+      padding: 20px 56px 100px;
       max-width: 1440px;
       margin: 0 auto;
     }
@@ -685,21 +709,39 @@
     .exp-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 60px;
+      gap: 180px;
     }
 
     .exp-col-title {
       font-family: var(--font-display);
-      font-size: 34px;
-      font-weight: 700;
+      font-size: 70px;
+      font-weight: 900;
       color: #fff;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
+      letter-spacing: -2.5px;
+      line-height: 1.02;
       margin-bottom: 40px;
     }
 
+    .roles-row {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .roles-row .exp-item {
+      flex: 1;
+      border-top: none;
+      border-left: none;
+      padding: 28px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .exp-item {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: none;
       padding: 28px 0;
       display: flex;
       gap: 18px;
@@ -707,9 +749,9 @@
     }
 
     .exp-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
+      width: 76px;
+      height: 76px;
+      border-radius: 14px;
       flex-shrink: 0;
       overflow: hidden;
       display: flex;
@@ -734,6 +776,78 @@
       font-size: 20px;
       font-weight: 800;
       color: #fff;
+    }
+
+    .view-cert-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-top: 12px;
+      transition: all 0.25s ease;
+      font-weight: 500;
+    }
+
+    .view-cert-btn:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-container {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 20px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Vertical line only between bullets */
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: -24px; /* Centered exactly on the bullet */
+      top: 30%;
+      height: calc(100% + 50px); /* Extends from 30% of this item to 30% of the next item */
+      width: 2px;
+      background: rgba(255, 255, 255, 0.12);
+      z-index: 1;
+    }
+
+    .timeline-bullet {
+      position: absolute;
+      left: -32px; /* Centered exactly with the line: -32 + 9 = -23px */
+      top: 30%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #85020a;
+      border: 3.5px solid var(--off-black, #0A0A0A);
+      z-index: 3;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-bullet {
+      background: #fff;
+      transform: translateY(-50%) scale(1.15);
+    }
+
+    .timeline-content {
+      /* Wrapper */
     }
 
     .exp-content {
@@ -1096,14 +1210,13 @@
 
       /* ── Projects ── */
       .projects-section {
-        padding: 64px 24px;
+        padding: 64px 24px 20px;
       }
 
       .section-header {
         text-align: center;
         align-items: center;
-        padding-top: 160px;
-        padding-bottom: 0;
+        padding: 60px 24px 10px;
       }
 
       .section-title {
@@ -1116,18 +1229,41 @@
       }
 
       .projects-carousel-container {
-        padding: 80px 0;
+        padding: 60px 24px 20px;
         border-radius: 24px;
-        min-height: 660px;
+        min-height: auto;
+        overflow: visible;
       }
 
       .projects-track {
-        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        padding: 0;
+      }
+
+      .project-card {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        min-height: 320px;
+        margin: 0;
+        transform: none !important;
+        z-index: 1 !important;
+        padding: 28px 24px;
+      }
+
+      .project-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+        z-index: 2 !important;
       }
 
       /* ── Skills ── */
       .skills-section {
-        padding: 64px 24px;
+        padding: 20px 24px 64px;
         text-align: center;
       }
 
@@ -1150,11 +1286,17 @@
 
       .exp-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 100px;
       }
 
       .exp-col-title {
         text-align: center;
+        font-size: clamp(40px, 12vw, 70px);
+      }
+
+      .roles-row {
+        flex-direction: column;
+        gap: 24px;
       }
 
       .exp-item {
@@ -1217,7 +1359,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#experience-detail">Experience</a></li>
     </ul>
     <div class="nav-actions">
       <a href="https://www.instagram.com/_gsdhillon?igsh=MXF5Mmo2cGxkY2Jmcg==" target="_blank" rel="noopener noreferrer"
@@ -1235,7 +1377,7 @@
           <path
             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
         </svg></a>
-      <a href="mailto:guradeshdhillon@gmail.com" class="nav-cta">Get in touch <span class="cta-icon">&#8599;</span></a>
+      <a href="#contact" class="nav-cta">Get in touch <span class="cta-icon">&#8599;</span></a>
     </div>
   </nav>
 
@@ -1561,63 +1703,94 @@
               </div>
             </div>
 
-            <div class="cert-card-wrapper">
-              <div class="cert-card">
-                <img src="certificate/Screenshot 2026-06-17 182702.png"
-                  alt="Java Full Stack Developer Virtual Internship Certificate" class="cert-card-img">
-                <div class="cert-card-label">
-                  AICTE &ndash; EduSkills &mdash; Java Full Stack Developer Virtual Internship
-                  <div class="cert-card-sub">Grade: O &middot; Oct &ndash; Dec 2025</div>
-                </div>
+
+
+          </div>
+        </div>
+
+        <!-- Experience in the middle -->
+        <div class="reveal" id="experience-detail">
+          <h2 class="exp-col-title">Experience</h2>
+          <div class="timeline-container">
+
+            <!-- AICTE EduSkills (Older) -->
+            <div class="timeline-item">
+              <div class="timeline-bullet"></div>
+              <div class="timeline-content">
+                <p class="exp-role">Java Full Stack Developer Intern</p>
+                <p class="exp-org">AICTE &ndash; EduSkills &middot; Internship</p>
+                <p class="exp-meta">Oct &ndash; Dec 2025 &middot; 10 weeks</p>
+                <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank" class="view-cert-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  View Certificate ↗
+                </a>
+              </div>
+            </div>
+
+            <!-- Suvidha Foundation (Newer) -->
+            <div class="timeline-item">
+              <div class="timeline-bullet"></div>
+              <div class="timeline-content">
+                <p class="exp-role">Artificial Intelligence Intern</p>
+                <p class="exp-org">Suvidha Foundation &middot; Internship</p>
+                <p class="exp-meta">Jun 2026 &middot; 1 mo</p>
+                <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank" class="view-cert-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  View Certificate ↗
+                </a>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- Professional Experience below -->
+        <!-- Roles below -->
         <div class="reveal">
-          <h2 class="exp-col-title">Experience</h2>
+          <h2 class="exp-col-title">Roles</h2>
+          <div class="roles-row">
 
-          <!-- ACM -->
-          <div class="exp-item">
-            <div class="exp-logo" style="background: #fff;">
-              <img src="acm ce svpcet logo.png" alt="ACM Logo">
+            <!-- ACM -->
+            <div class="exp-item">
+              <div class="exp-logo" style="background: #fff;">
+                <img src="acm ce svpcet logo.png" alt="ACM Logo">
+              </div>
+              <div class="exp-content">
+                <p class="exp-role">Event Technologist Head</p>
+                <p class="exp-org">ACM, Association for Computing Machinery</p>
+                <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
+                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+              </div>
             </div>
-            <div class="exp-content">
-              <p class="exp-role">Event Technologist Head</p>
-              <p class="exp-org">ACM, Association for Computing Machinery</p>
-              <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
-              <p class="exp-meta">Nagpur, Maharashtra, India</p>
+
+            <!-- Unnat Bharat Abhiyan -->
+            <div class="exp-item">
+              <div class="exp-logo" style="background: #fff;">
+                <img src="unnat bharat abhiyan logo.png" alt="Unnat Bharat Abhiyan Logo">
+              </div>
+              <div class="exp-content">
+                <p class="exp-role">Software Application Developer</p>
+                <p class="exp-org">Unnat Bharat Abhiyan &middot; Full-time</p>
+                <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
+                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+              </div>
             </div>
+
+            <!-- Engineering India -->
+            <div class="exp-item">
+              <div class="exp-logo" style="background: #fff;">
+                <img src="engineering india logo.png" alt="Engineering India Logo">
+              </div>
+              <div class="exp-content">
+                <p class="exp-role">Management Team Member</p>
+                <p class="exp-org">ENGINEERING INDIA</p>
+                <p class="exp-meta">Aug 2024 &ndash; Present &middot; 1 yr 11 mos</p>
+                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+              </div>
+            </div>
+
           </div>
-
-          <!-- Unnat Bharat Abhiyan -->
-          <div class="exp-item">
-            <div class="exp-logo" style="background: #fff;">
-              <img src="unnat bharat abhiyan logo.png" alt="Unnat Bharat Abhiyan Logo">
-            </div>
-            <div class="exp-content">
-              <p class="exp-role">Software Application Developer</p>
-              <p class="exp-org">Unnat Bharat Abhiyan &middot; Full-time</p>
-              <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
-              <p class="exp-meta">Nagpur, Maharashtra, India</p>
-            </div>
-          </div>
-
-          <!-- Engineering India -->
-          <div class="exp-item">
-            <div class="exp-logo" style="background: #fff;">
-              <img src="engineering india logo.png" alt="Engineering India Logo">
-            </div>
-            <div class="exp-content">
-              <p class="exp-role">Management Team Member</p>
-              <p class="exp-org">ENGINEERING INDIA</p>
-              <p class="exp-meta">Aug 2024 &ndash; Present &middot; 1 yr 11 mos</p>
-              <p class="exp-meta">Nagpur, Maharashtra, India</p>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -1625,7 +1798,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="footer-inner">
       <p class="footer-eyebrow">Let's connect</p>
       <h2 class="footer-heading">Get In<br>Touch.</h2>
@@ -1690,145 +1863,7 @@
     );
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Carousel logic
-    const track = document.querySelector('.projects-track');
-    const container = document.querySelector('.projects-carousel-container');
-    const cards = Array.from(document.querySelectorAll('.project-card'));
-
-    let currentIndex = 0;
-    let isPaused = false;
-    let autoplayInterval;
-
-    function centerCard(index) {
-      if (!track || !container || cards.length === 0) return;
-
-      // Remove active class from all cards
-      cards.forEach(card => card.classList.remove('active'));
-
-      // Add active class to selected card
-      const targetCard = cards[index];
-      targetCard.classList.add('active');
-
-      // Calculate centering translation
-      const containerWidth = container.offsetWidth;
-      const cardWidth = targetCard.offsetWidth;
-      const cardOffset = targetCard.offsetLeft;
-
-      // Center calculation: container center minus card center
-      const translateVal = (containerWidth / 2) - (cardOffset + cardWidth / 2);
-
-      // Apply translation to track
-      track.style.transform = `translateX(${translateVal}px)`;
-      currentIndex = index;
-
-      // Apply parabolic arch (n-type motion) and rotation to each card
-      const targetCenter = cardOffset + cardWidth / 2;
-      const maxDist = 800; // Reference distance for scaling math
-      const maxOffset = 125; // Max pixels pushed down at edge
-      const maxRotation = 18; // Max rotation angle in degrees at edge
-
-      cards.forEach(card => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const diffX = cardCenter - targetCenter;
-
-        // Calculate vertical displacement using parabola
-        const ratio = Math.min(Math.abs(diffX) / maxDist, 1.5);
-        const diffY = maxOffset * Math.pow(ratio, 2);
-
-        // Calculate rotation based on horizontal direction
-        const rotation = maxRotation * (diffX / maxDist);
-
-        // Combine with active card scaling and pop-up vertical offset
-        const isActive = card.classList.contains('active');
-        const scaleVal = isActive ? 1.10 : 0.80;
-        const activeY = isActive ? -20 : 0;
-
-        const totalY = diffY + activeY;
-
-        card.style.transform = `translateY(${totalY}px) scale(${scaleVal}) rotate(${rotation}deg)`;
-      });
-    }
-
-    function startAutoplay() {
-      stopAutoplay();
-      autoplayInterval = setInterval(() => {
-        if (!isPaused) {
-          let nextIndex = (currentIndex + 1) % cards.length;
-          centerCard(nextIndex);
-        }
-      }, 2200); // 2.2 seconds interval
-    }
-
-    function stopAutoplay() {
-      if (autoplayInterval) {
-        clearInterval(autoplayInterval);
-      }
-    }
-
-    // Set up hover and scroll event listeners
-    if (container) {
-      container.addEventListener('mouseenter', () => {
-        isPaused = true;
-      });
-
-      container.addEventListener('mouseleave', () => {
-        isPaused = false;
-      });
-
-      // Also allow clicking a card to center it immediately
-      cards.forEach((card, idx) => {
-        card.addEventListener('click', (e) => {
-          centerCard(idx);
-        });
-      });
-
-      // Horizontal scroll wheel interception
-      let lastScrollTime = 0;
-      const scrollCooldown = 450; // ms transition cooldown
-
-      container.addEventListener('wheel', (e) => {
-        // Intercept vertical scroll and prevent body scroll
-        e.preventDefault();
-
-        const now = Date.now();
-        if (now - lastScrollTime < scrollCooldown) {
-          return;
-        }
-
-        // deltaY > 0 / deltaX > 0 (scroll down/right) goes next
-        // deltaY < 0 / deltaX < 0 (scroll up/left) goes prev
-        if (Math.abs(e.deltaY) > 10 || Math.abs(e.deltaX) > 10) {
-          if (e.deltaY > 0 || e.deltaX > 0) {
-            currentIndex = (currentIndex + 1) % cards.length;
-          } else {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-          }
-          centerCard(currentIndex);
-          lastScrollTime = now;
-        }
-      }, { passive: false });
-    }
-
-    // Initialize and handle window resize to keep center aligned
-    window.addEventListener('resize', () => {
-      centerCard(currentIndex);
-    });
-
-    // Initial center and start auto play after loaded
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        centerCard(0);
-        startAutoplay();
-      }, 150);
-    });
-
-    // Fallback if load event already fired
-    if (document.readyState === 'complete') {
-      setTimeout(() => {
-        centerCard(0);
-        startAutoplay();
-      }, 150);
-    }
+    // Layout is static. No carousel script is required as layout transitions are handled purely by CSS.
   </script>
 
 </body>
