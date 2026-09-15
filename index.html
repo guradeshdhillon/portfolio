@@ -7,7 +7,7 @@
   <title>Guradesh Dhillon</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap"
     rel="stylesheet">
   <style>
     *,
@@ -34,7 +34,8 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 130px; /* Offsets scroll to prevent headers from being covered by the fixed nav bar */
+      scroll-padding-top: 130px;
+      /* Offsets scroll to prevent headers from being covered by the fixed nav bar */
     }
 
     body {
@@ -492,6 +493,30 @@
       margin-top: 4px;
     }
 
+    .projects-subtitle {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      letter-spacing: -2px;
+      margin-right: 0;
+      text-transform: lowercase;
+      color: #666;
+      line-height: 1.02;
+      margin-top: 0;
+    }
+
+    .projects-header .section-title {
+      font-size: 90px;
+    }
+
+    .projects-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding-left: 80px;
+    }
+
 
 
     .view-all {
@@ -514,133 +539,127 @@
       width: 100%;
       margin: 0 auto;
       background: #fff;
-      padding: 45px 24px 50px;
-      border-radius: 0;
-      overflow: visible;
-      position: relative;
+      padding: 40px 80px 60px;
     }
 
     .projects-track {
       display: grid;
-      grid-template-columns: repeat(3, auto);
-      justify-content: center;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       width: 100%;
-      max-width: 1350px;
-      margin: 0 auto;
-      padding: 15px 0 40px;
-      gap: 64px 20px;
     }
 
     .project-card {
-      background: #0A0A0A;
-      padding: 32px 28px 36px;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #000;
+      border: 10px solid #000;
       border-radius: 32px;
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.4s ease;
-      cursor: pointer;
-      min-height: 370px;
-      height: auto;
-      width: 420px;
-      flex-shrink: 0;
+      padding: 30px 36px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 40px;
+      width: 100%;
+      min-height: 100px;
       text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '↗';
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.2);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      background: #0d0d0d;
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .project-card:hover::after {
+      color: rgba(255, 255, 255, 0.7);
+      transform: translate(2px, -2px);
+    }
+
+    .card-left {
+      min-width: 240px;
+      max-width: 240px;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+      padding-right: 48px;
+    }
+
+    .card-right {
+      flex: 1;
+      background: #fff;
+      border-radius: 10px 30px 30px 10px;
+      padding: 20px 24px;
+      border: none;
+      margin: -30px -36px -30px -50px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-      margin: 0;
-      will-change: transform, box-shadow;
-      
-      /* Crisp text rendering fixes for transformed elements */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      transform: translate3d(0, 0, 0);
-    }
-
-    /* Static positioning for curved cards in 3-column rows (straight, not rotated) */
-    .project-card:nth-child(3n+1) {
-      transform: translate3d(0, 20px, 0) scale(0.92);
-      z-index: 1;
-    }
-    .project-card:nth-child(3n+2) {
-      transform: translate3d(0, -40px, 0) scale(1.0);
-      z-index: 2;
-    }
-    .project-card:nth-child(3n) {
-      transform: translate3d(0, 20px, 0) scale(0.92);
-      z-index: 1;
-    }
-
-    /* Interactive hover flatten & zoom */
-    .project-card:nth-child(3n+1):hover {
-      transform: translate3d(0, 6px, 0) scale(0.98);
-      z-index: 10;
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
-    }
-    .project-card:nth-child(3n+2):hover {
-      transform: translate3d(0, -54px, 0) scale(1.06);
-      z-index: 10;
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
-    }
-    .project-card:nth-child(3n):hover {
-      transform: translate3d(0, 6px, 0) scale(0.98);
-      z-index: 10;
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+      justify-content: center;
     }
 
     .card-num {
-      font-size: 11.5px;
+      font-size: 11px;
       color: #85020a;
       font-weight: 800;
       letter-spacing: 1.5px;
-      margin-bottom: 12px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .card-title {
       font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: 800;
       color: #fff;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 6px;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 8px;
     }
 
     .card-sub {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0;
+      line-height: 1.4;
     }
 
     .card-desc {
-      font-size: 13.5px;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.5;
-      font-weight: 500;
-      margin-bottom: 12px;
+      font-size: 14px;
+      color: #111;
+      line-height: 1.6;
+      font-weight: 400;
+      margin-bottom: 14px;
     }
 
     .card-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
-      margin-top: auto;
+      gap: 6px;
     }
 
     .card-tag {
       font-size: 10.5px;
-      color: #000000;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background-color: #ffffff;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #111;
+      border: 1px solid rgba(0, 0, 0, 0.15);
       font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
     /* ─── SKILLS ─── */
@@ -819,9 +838,11 @@
     .timeline-item:not(:last-child)::after {
       content: '';
       position: absolute;
-      left: -24px; /* Centered exactly on the bullet */
+      left: -24px;
+      /* Centered exactly on the bullet */
       top: 30%;
-      height: calc(100% + 50px); /* Extends from 30% of this item to 30% of the next item */
+      height: calc(100% + 50px);
+      /* Extends from 30% of this item to 30% of the next item */
       width: 2px;
       background: rgba(255, 255, 255, 0.12);
       z-index: 1;
@@ -829,7 +850,8 @@
 
     .timeline-bullet {
       position: absolute;
-      left: -32px; /* Centered exactly with the line: -32 + 9 = -23px */
+      left: -32px;
+      /* Centered exactly with the line: -32 + 9 = -23px */
       top: 30%;
       transform: translateY(-50%);
       width: 18px;
@@ -1236,29 +1258,34 @@
       }
 
       .projects-track {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-        width: 100%;
-        padding: 0;
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
 
       .project-card {
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        min-height: 320px;
-        margin: 0;
-        transform: none !important;
-        z-index: 1 !important;
-        padding: 28px 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 20px;
+        overflow: hidden;
       }
 
-      .project-card:hover {
-        transform: translateY(-6px) !important;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-        z-index: 2 !important;
+      .card-left {
+        min-width: unset;
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-right: 0;
+        padding-bottom: 16px;
+        padding: 16px 20px 16px 20px;
+        width: 100%;
+      }
+
+      .card-right {
+        width: 100%;
+        margin: 0;
+        border-radius: 22px;
+        padding: 16px 20px;
       }
 
       /* ── Skills ── */
@@ -1417,117 +1444,148 @@
       <p class="about-subtitle">one model at a time.</p>
     </div>
     <div class="about-right reveal">
-      <p class="about-text">I'm Guradesh Dhillon, a third-year Computer Engineering student specialising in AI &amp;
-        Data Science at SVPCET, Nagpur, with a 9.3 CGPA and a clear mission: to become an AI Engineer who builds systems
-        that actually think. My work sits at the intersection of machine learning, data science, and real-world
-        problem-solving. I've built end-to-end ML pipelines from a loan approval predictor using KNN, Logistic
-        Regression, and Naive Bayes, to a customer segmentation engine leveraging KMeans clustering and PCA, and I
-        approach every project with the same rigour: clean data, meaningful features, and models that hold up under
-        evaluation. Beyond solo projects, I've validated my skills across industry simulations with BCG X, Tata,
-        and British Airways through Forage, and earned Kaggle certifications spanning Machine Learning, Deep Learning,
-        and Model Explainability. I'm currently deepening my hands-on experience through a Data Science &amp; ML
-        internship at UniConverge Tech.</p>
+      <p class="about-text">I'm Guradesh Dhillon, a final-year Computer Engineering student at SVPCET, Nagpur, with a
+        9.3 CGPA. I learn by shipping, not just studying, and most of what's here is proof of that.
 
-      <p class="about-text">I'm not just learning AI, I'm learning how to engineer it. From feature pipelines to model
-        evaluation to deployment-ready thinking, I'm building the foundation to design AI systems that scale.</p>
-      <p class="about-text">When I'm not training models, I lead technical operations as Event Technologist Head at ACM
-        SVPCET because good engineering is as much about systems thinking as it is about code.</p>
+        My flagship project, CreditWise AI, is a full-stack loan approval platform: an XGBoost model tuned with Optuna,
+        served through FastAPI, containerized with Docker, and tracked with MLflow. It pairs SHAP-based explainability
+        with the Claude API to turn every prediction into a plain-English decision summary, alongside dashboards for
+        what-if analysis and fairness auditing. On the computer vision side, I'm building DentalSeg AI, a two-stage
+        tooth instance-segmentation pipeline using YOLOv8-Seg for detection, SAM2 for pseudo-labeling, and a rule-based
+        FDI numbering engine for clinical labeling, grown out of a HealthTech internship where I ran the annotation
+        pipeline from raw intraoral photos to COCO-format datasets. I'm also currently building Protocol-Alpha, an
+        on-device AI privacy middleware for Android that runs Phi-4-Mini locally, so sensitive data never has to leave
+        the device.
+
+        Alongside these, I'm completing a Data Analytics internship under AICTE and Vodafone Idea Foundation's VOIS for
+        Tech program, working through HR, agriculture, and operations datasets with Python, and I hold certifications
+        including Oracle's Foundations Associate in AI & Agentic AI and Harvard's CS50 AI with Python.
+
+        Outside of models and notebooks, I lead technical infrastructure as Event Technologist Head for the ACM CSE
+        Student Chapter, because good engineering is as much about systems thinking as it is about code.</p>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section class="projects-section" id="projects">
-    <div class="section-header">
-      <h2 class="section-title">PROJECTS</h2>
-      <p class="section-subtitle">EXPERIMENTING TECH</p>
+    <div class="section-header projects-header">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle projects-subtitle">experimenting tech.</p>
     </div>
 
     <div class="projects-carousel-container reveal">
       <div class="projects-track">
         <a href="https://github.com/guradeshdhillon/CreditWise-AI" target="_blank" rel="noopener noreferrer"
           class="project-card">
-          <p class="card-num">FEB 2026</p>
-          <h3 class="card-title">CreditWise AI</h3>
-          <p class="card-sub">Loan Approval Intelligence Platform</p>
-          <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost model with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend, three interactive web dashboards for assessment, what-if analysis, and fairness auditing, plus PDF report generation, MLflow experiment tracking, and Docker deployment.</p>
-          <div class="card-tags">
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Scikit-learn</span>
-            <span class="card-tag">Pandas</span>
-            <span class="card-tag">NumPy</span>
-            <span class="card-tag">XGBoost</span>
-            <span class="card-tag">FastAPI</span>
+          <div class="card-left">
+            <p class="card-num">FEB 2026</p>
+            <h3 class="card-title">CreditWise AI</h3>
+            <p class="card-sub">Loan Approval Intelligence Platform</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost model
+              with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend, three
+              interactive web dashboards for assessment, what-if analysis, and fairness auditing, plus PDF report
+              generation, MLflow experiment tracking, and Docker deployment.</p>
+            <div class="card-tags">
+              <span class="card-tag">Python</span>
+              <span class="card-tag">Scikit-learn</span>
+              <span class="card-tag">Pandas</span>
+              <span class="card-tag">NumPy</span>
+              <span class="card-tag">XGBoost</span>
+              <span class="card-tag">FastAPI</span>
+            </div>
           </div>
         </a>
 
         <a href="https://github.com/guradeshdhillon/Customer-Segmentation-Pipeline" target="_blank"
           rel="noopener noreferrer" class="project-card">
-          <p class="card-num">MAR 2026</p>
-          <h3 class="card-title">RetailScope</h3>
-          <p class="card-sub">Unsupervised ML &middot; Customer Segmentation</p>
-          <p class="card-desc">Customer segmentation pipeline using KMeans and Agglomerative Clustering. PCA-based 2D
-            visualisation, Elbow Method, and Silhouette scoring for optimal cluster selection from retail transaction
-            data.</p>
-          <div class="card-tags">
-            <span class="card-tag">KMeans</span>
-            <span class="card-tag">PCA</span>
-            <span class="card-tag">Seaborn</span>
-            <span class="card-tag">Scikit-learn</span>
+          <div class="card-left">
+            <p class="card-num">MAR 2026</p>
+            <h3 class="card-title">RetailScope</h3>
+            <p class="card-sub">Unsupervised ML &middot; Customer Segmentation</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">Customer segmentation pipeline using KMeans and Agglomerative Clustering. PCA-based 2D
+              visualisation, Elbow Method, and Silhouette scoring for optimal cluster selection from retail transaction
+              data.</p>
+            <div class="card-tags">
+              <span class="card-tag">KMeans</span>
+              <span class="card-tag">PCA</span>
+              <span class="card-tag">Seaborn</span>
+              <span class="card-tag">Scikit-learn</span>
+            </div>
           </div>
         </a>
 
         <a href="https://github.com/guradeshdhillon/food-grub-user" target="_blank" rel="noopener noreferrer"
           class="project-card">
-          <p class="card-num">SEP–DEC 2024</p>
-          <h3 class="card-title">Grub</h3>
-          <p class="card-sub">Mobile App &middot; Android</p>
-          <p class="card-desc">Native Android canteen pre-ordering system with student-facing interface and a vendor
-            dashboard for real-time demand forecasting and order management — eliminating canteen queues entirely.</p>
-          <div class="card-tags">
-            <span class="card-tag">Kotlin</span>
-            <span class="card-tag">Android SDK</span>
-            <span class="card-tag">XML</span>
+          <div class="card-left">
+            <p class="card-num">SEP–DEC 2024</p>
+            <h3 class="card-title">Grub</h3>
+            <p class="card-sub">Mobile App &middot; Android</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">Native Android canteen pre-ordering system with student-facing interface and a vendor
+              dashboard for real-time demand forecasting and order management — eliminating canteen queues entirely.</p>
+            <div class="card-tags">
+              <span class="card-tag">Kotlin</span>
+              <span class="card-tag">Android SDK</span>
+              <span class="card-tag">XML</span>
+            </div>
           </div>
         </a>
 
         <a href="https://github.com/guradeshdhillon/chapel-hymnal" target="_blank" rel="noopener noreferrer"
           class="project-card">
-          <p class="card-num">FEB–MAY 2025</p>
-          <h3 class="card-title">Forage-Midas</h3>
-          <p class="card-sub">Full-Stack &middot; Sustainability Platform</p>
-          <p class="card-desc">Waste management portal with real-time inventory tracking connecting food donors with
-            local organisations, reducing food waste through a clean full-stack web interface.</p>
-          <div class="card-tags">
-            <span class="card-tag">Full-Stack</span>
-            <span class="card-tag">Web Dev</span>
-            <span class="card-tag">Real-time</span>
+          <div class="card-left">
+            <p class="card-num">FEB–MAY 2025</p>
+            <h3 class="card-title">Forage-Midas</h3>
+            <p class="card-sub">Full-Stack &middot; Sustainability Platform</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">Waste management portal with real-time inventory tracking connecting food donors with
+              local organisations, reducing food waste through a clean full-stack web interface.</p>
+            <div class="card-tags">
+              <span class="card-tag">Full-Stack</span>
+              <span class="card-tag">Web Dev</span>
+              <span class="card-tag">Real-time</span>
+            </div>
           </div>
         </a>
 
         <a href="https://github.com/guradeshdhillon/digital_profile" target="_blank" rel="noopener noreferrer"
           class="project-card">
-          <p class="card-num">2025</p>
-          <h3 class="card-title">Digital Portfolio App</h3>
-          <p class="card-sub">Mobile App &middot; Full-Stack Android</p>
-          <p class="card-desc">Full-stack Android portfolio application with SQLite-backed certification management
-            (full CRUD), SharedPreferences persistence, dynamic dark theme, and multi-screen navigation.</p>
-          <div class="card-tags">
-            <span class="card-tag">Java</span>
-            <span class="card-tag">SQLite</span>
-            <span class="card-tag">Android SDK</span>
+          <div class="card-left">
+            <p class="card-num">2025</p>
+            <h3 class="card-title">Digital Portfolio App</h3>
+            <p class="card-sub">Mobile App &middot; Full-Stack Android</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">Full-stack Android portfolio application with SQLite-backed certification management
+              (full CRUD), SharedPreferences persistence, dynamic dark theme, and multi-screen navigation.</p>
+            <div class="card-tags">
+              <span class="card-tag">Java</span>
+              <span class="card-tag">SQLite</span>
+              <span class="card-tag">Android SDK</span>
+            </div>
           </div>
         </a>
 
         <a href="https://github.com/guradeshdhillon/ei-svpcet" target="_blank" rel="noopener noreferrer"
           class="project-card">
-          <p class="card-num">SEP–DEC 2025</p>
-          <h3 class="card-title">Engineering India</h3>
-          <p class="card-sub">Web &middot; Club Website</p>
-          <p class="card-desc">Conceptualised and launched SVPCET's first official Engineering India club website — a
-            central hub for technical news, events, and competition registrations for the student community.</p>
-          <div class="card-tags">
-            <span class="card-tag">Web Dev</span>
-            <span class="card-tag">UI/UX</span>
+          <div class="card-left">
+            <p class="card-num">SEP–DEC 2025</p>
+            <h3 class="card-title">Engineering India</h3>
+            <p class="card-sub">Web &middot; Club Website</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">Conceptualised and launched SVPCET's first official Engineering India club website — a
+              central hub for technical news, events, and competition registrations for the student community.</p>
+            <div class="card-tags">
+              <span class="card-tag">Web Dev</span>
+              <span class="card-tag">UI/UX</span>
+            </div>
           </div>
         </a>
       </div>
@@ -1543,42 +1601,46 @@
         <p class="skill-cat-name">ML / AI</p>
         <ul class="skill-list">
           <li>Scikit-learn</li>
-          <li>NumPy &amp; Pandas</li>
-          <li>Matplotlib &amp; Seaborn</li>
+          <li>XGBoost &amp; Optuna</li>
+          <li>SHAP</li>
+          <li>TensorFlow &amp; PyTorch</li>
+          <li>CNN &amp; RNN</li>
+          <li>Transformers</li>
+          <li>YOLOv8-Seg &amp; SAM2</li>
           <li>Feature Engineering</li>
-          <li>Supervised Learning</li>
-          <li>Unsupervised Learning</li>
-          <li>PCA &amp; Dimensionality Reduction</li>
+          <li>Supervised &amp; Unsupervised Learning</li>
         </ul>
       </div>
       <div class="skill-cat reveal">
         <p class="skill-cat-name">Programming</p>
         <ul class="skill-list">
           <li>Python</li>
-          <li>Java (Core, OOP, JDBC)</li>
+          <li>Java (Core, OOP, DSA)</li>
           <li>C / C++</li>
-          <li>Kotlin</li>
-          <li>SQL / MySQL</li>
+          <li>SQL (MySQL)</li>
         </ul>
       </div>
       <div class="skill-cat reveal">
         <p class="skill-cat-name">Tools &amp; Platforms</p>
         <ul class="skill-list">
+          <li>NumPy &amp; Pandas</li>
+          <li>Matplotlib &amp; Seaborn</li>
           <li>Git &amp; GitHub</li>
           <li>Docker</li>
-          <li>VirtualBox</li>
-          <li>VS Code</li>
-          <li>Android Studio</li>
+          <li>MLflow</li>
           <li>Google Colab</li>
+          <li>Label Studio</li>
+          <li>Power BI</li>
         </ul>
       </div>
       <div class="skill-cat reveal">
         <p class="skill-cat-name">Web &amp; Mobile</p>
         <ul class="skill-list">
-          <li>React.js</li>
-          <li>Android SDK (Kotlin/XML)</li>
-          <li>SQLite</li>
-          <li>SharedPreferences</li>
+          <li>FastAPI</li>
+          <li>Streamlit</li>
+          <li>Claude API</li>
+          <li>Android (Java)</li>
+          <li>HTML / CSS / JavaScript</li>
         </ul>
       </div>
     </div>
@@ -1724,7 +1786,15 @@
                 <p class="exp-meta">Oct &ndash; Dec 2025 &middot; 10 weeks</p>
                 <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
                 <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank" class="view-cert-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 4px;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
                   View Certificate ↗
                 </a>
               </div>
@@ -1738,8 +1808,17 @@
                 <p class="exp-org">Suvidha Foundation &middot; Internship</p>
                 <p class="exp-meta">Jun 2026 &middot; 1 mo</p>
                 <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
-                <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank" class="view-cert-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank"
+                  class="view-cert-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 4px;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
                   View Certificate ↗
                 </a>
               </div>
