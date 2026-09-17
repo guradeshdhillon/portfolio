@@ -838,24 +838,24 @@
     .timeline-item:not(:last-child)::after {
       content: '';
       position: absolute;
-      left: -24px;
-      /* Centered exactly on the bullet */
-      top: 30%;
+      left: 53px;
+      /* Centered on the bullet (left: 40px + half of 26px = 53px) */
+      top: 50%;
       height: calc(100% + 50px);
-      /* Extends from 30% of this item to 30% of the next item */
+      /* Extends from centre of this item to centre of the next */
       width: 2px;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.2);
       z-index: 1;
     }
 
     .timeline-bullet {
       position: absolute;
-      left: -32px;
-      /* Centered exactly with the line: -32 + 9 = -23px */
-      top: 30%;
+      left: 40px;
+      /* Sits with gap before the exp-card's 80px margin */
+      top: 50%;
       transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: #85020a;
       border: 3.5px solid var(--off-black, #0A0A0A);
@@ -870,6 +870,79 @@
 
     .timeline-content {
       /* Wrapper */
+    }
+
+    .exp-card {
+      background: #fff;
+      border-radius: 32px;
+      padding: 24px 32px;
+      border: 1.5px solid #e0e0e0;
+      margin: 0 260px 0 100px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .exp-card:hover {
+      transform: scale(1.03) translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35),
+                  0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .exp-card-text {
+      flex: 1;
+    }
+
+    .exp-card-info {
+      flex: 1;
+    }
+
+    .exp-card-meta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      flex-shrink: 0;
+      gap: 2px;
+    }
+
+    .exp-card .exp-role {
+      color: #000;
+      font-size: 26px;
+    }
+
+    .exp-card .exp-org {
+      color: #333;
+      font-size: 17px;
+    }
+
+    .exp-card .exp-meta {
+      color: #666;
+      font-size: 13.5px;
+      text-align: right;
+    }
+
+    .exp-card-meta-right .exp-meta:first-child {
+      color: #85020a;
+      font-weight: 600;
+    }
+
+    .exp-card .view-cert-btn {
+      color: #fff;
+      background: #000;
+      border-color: #000;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-card .view-cert-btn:hover {
+      background: #222;
+      border-color: #222;
     }
 
     .exp-content {
@@ -1345,6 +1418,44 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      /* ── Experience timeline card ── */
+      .exp-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .exp-card-info {
+        width: 100%;
+      }
+
+      .exp-card-meta-right {
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .exp-card .exp-meta {
+        text-align: left;
+      }
+
+      .exp-card .view-cert-btn {
+        align-self: flex-start;
+      }
+
+      .timeline-container {
+        padding-left: 0;
+      }
+
+      .timeline-bullet {
+        display: none;
+      }
+
+      .timeline-item:not(:last-child)::after {
+        display: none;
+      }
+
       /* ── Footer ── */
       .footer {
         padding: 72px 24px 48px;
@@ -1371,7 +1482,21 @@
     @media (max-width: 600px) {
       .cert-cards-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 20px;
+      }
+
+      .cert-card-wrapper {
+        aspect-ratio: 16 / 10;
+        width: 100%;
+      }
+
+      .cert-card-wrapper:hover .cert-card {
+        transform: scale(1.05) translateY(-6px);
+      }
+
+      .cert-card-label {
+        font-size: 13px;
+        text-align: center;
       }
     }
   </style>
@@ -1483,8 +1608,10 @@
             <p class="card-sub">Loan Approval Intelligence Platform</p>
           </div>
           <div class="card-right">
-            <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost model
-              with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend, three
+            <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost
+              model
+              with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend,
+              three
               interactive web dashboards for assessment, what-if analysis, and fairness auditing, plus PDF report
               generation, MLflow experiment tracking, and Docker deployment.</p>
             <div class="card-tags">
@@ -1659,6 +1786,84 @@
 
             <div class="cert-card-wrapper">
               <div class="cert-card">
+                <img src="certificate/snowflake1.png" alt="GeeksforGeeks Building AI Agents with Snowflake Certificate"
+                  class="cert-card-img">
+                <div class="cert-card-label">
+                  GeeksforGeeks &mdash; Building AI Agents with Snowflake
+                  <div class="cert-card-sub">GeeksforGeeks</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/harvard.png"
+                  alt="Harvard CS50 Introduction to Artificial Intelligence with Python Certificate"
+                  class="cert-card-img">
+                <div class="cert-card-label">
+                  CS50 &mdash; Introduction to Artificial Intelligence with Python
+                  <div class="cert-card-sub">Harvard University &middot; 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/isro.png" alt="ISRO IIRS AI/ML for Geodata Analytics Certificate"
+                  class="cert-card-img">
+                <div class="cert-card-label">
+                  ISRO IIRS &mdash; AI/ML for Geodata Analytics
+                  <div class="cert-card-sub">Indian Institute of Remote Sensing, Dehradun &middot; Aug 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/javaspokentest.png" alt="Java Training Certificate" class="cert-card-img">
+                <div class="cert-card-label">
+                  Spoken Tutorial, IIT Bombay &mdash; Java Training
+                  <div class="cert-card-sub">EduPyramids &middot; Apr 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/oracle1.png" alt="Oracle Certified Foundations Associate - Agentic AI Certificate"
+                  class="cert-card-img">
+                <div class="cert-card-label">
+                  Oracle &mdash; Agentic AI Certified Foundations Associate
+                  <div class="cert-card-sub">Oracle University &middot; Aug 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/oracle2.png"
+                  alt="Oracle Cloud Infrastructure Certified AI Foundations Associate Certificate"
+                  class="cert-card-img">
+                <div class="cert-card-label">
+                  Oracle &mdash; OCI Certified AI Foundations Associate
+                  <div class="cert-card-sub">Oracle University &middot; Aug 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card-wrapper">
+              <div class="cert-card">
+                <img src="certificate/snowflake2.png"
+                  alt="GeeksforGeeks Introduction to Generative AI with Snowflake Certificate" class="cert-card-img">
+                <div class="cert-card-label">
+                  GeeksforGeeks &mdash; Introduction to Generative AI with Snowflake
+                  <div class="cert-card-sub">GeeksforGeeks</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="cert-card-wrapper">
+              <div class="cert-card">
                 <img src="certificate/Screenshot 2026-06-17 182531.png"
                   alt="BCG X Data Science Job Simulation Certificate" class="cert-card-img">
                 <div class="cert-card-label">
@@ -1666,7 +1871,7 @@
                   <div class="cert-card-sub">Forage &middot; June 2026</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="cert-card-wrapper">
               <div class="cert-card">
@@ -1679,7 +1884,7 @@
               </div>
             </div>
 
-            <div class="cert-card-wrapper">
+            <!-- <div class="cert-card-wrapper">
               <div class="cert-card">
                 <img src="certificate/Screenshot 2026-06-17 182554.png"
                   alt="British Airways Data Science Job Simulation Certificate" class="cert-card-img">
@@ -1688,7 +1893,7 @@
                   <div class="cert-card-sub">Forage &middot; June 2026</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="cert-card-wrapper">
               <div class="cert-card">
@@ -1701,7 +1906,7 @@
               </div>
             </div>
 
-            <div class="cert-card-wrapper">
+            <!-- <div class="cert-card-wrapper">
               <div class="cert-card">
                 <img src="certificate/Screenshot 2026-06-17 182724.png"
                   alt="DATACOM Partnering with AI in the workplace Job Simulation Certificate" class="cert-card-img">
@@ -1710,9 +1915,9 @@
                   <div class="cert-card-sub">Forage &middot; June 2026</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="cert-card-wrapper">
+            <!-- <div class="cert-card-wrapper">
               <div class="cert-card">
                 <img src="certificate/Screenshot 2026-06-17 182511.png"
                   alt="Forage Data Labeling Job Simulation Certificate" class="cert-card-img">
@@ -1721,7 +1926,7 @@
                   <div class="cert-card-sub">Forage &middot; June 2026</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="cert-card-wrapper">
               <div class="cert-card">
@@ -1756,7 +1961,7 @@
               </div>
             </div>
 
-            <div class="cert-card-wrapper">
+            <!-- <div class="cert-card-wrapper">
               <div class="cert-card">
                 <img src="certificate/Guradesh Dhillon - Machine Learning Explainability.png"
                   alt="Kaggle Machine Learning Explainability Certificate" class="cert-card-img">
@@ -1765,7 +1970,7 @@
                   <div class="cert-card-sub">Kaggle &middot; May 2026</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
 
 
@@ -1781,22 +1986,28 @@
             <div class="timeline-item">
               <div class="timeline-bullet"></div>
               <div class="timeline-content">
-                <p class="exp-role">Java Full Stack Developer Intern</p>
-                <p class="exp-org">AICTE &ndash; EduSkills &middot; Internship</p>
-                <p class="exp-meta">Oct &ndash; Dec 2025 &middot; 10 weeks</p>
-                <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
-                <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank" class="view-cert-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="margin-right: 4px;">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                  View Certificate ↗
-                </a>
+                <div class="exp-card">
+                  <div class="exp-card-info">
+                    <p class="exp-role">Java Full Stack Developer Intern</p>
+                    <p class="exp-org">AICTE &ndash; EduSkills &middot; Internship</p>
+                  </div>
+                  <div class="exp-card-meta-right">
+                    <p class="exp-meta">Oct &ndash; Dec 2025 &middot; 10 weeks</p>
+                    <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                  </div>
+                  <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank" class="view-cert-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      style="margin-right: 4px;">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    View Certificate ↗
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1804,23 +2015,29 @@
             <div class="timeline-item">
               <div class="timeline-bullet"></div>
               <div class="timeline-content">
-                <p class="exp-role">Artificial Intelligence Intern</p>
-                <p class="exp-org">Suvidha Foundation &middot; Internship</p>
-                <p class="exp-meta">Jun 2026 &middot; 1 mo</p>
-                <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
-                <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank"
-                  class="view-cert-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="margin-right: 4px;">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                  View Certificate ↗
-                </a>
+                <div class="exp-card">
+                  <div class="exp-card-info">
+                    <p class="exp-role">Artificial Intelligence Intern</p>
+                    <p class="exp-org">Suvidha Foundation &middot; Internship</p>
+                  </div>
+                  <div class="exp-card-meta-right">
+                    <p class="exp-meta">Jun 2026 &middot; 1 mo</p>
+                    <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                  </div>
+                  <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank"
+                    class="view-cert-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      style="margin-right: 4px;">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    View Certificate ↗
+                  </a>
+                </div>
               </div>
             </div>
 
