@@ -353,7 +353,7 @@
 
     /* ─── ABOUT ─── */
     .about {
-      padding: 80px 56px;
+      padding: 80px 56px 20px 56px;
       width: 100%;
       max-width: 1640px;
       margin: 32px auto 0;
@@ -422,15 +422,15 @@
       color: #FFFFFF;
       line-height: 1.75;
       font-weight: 500;
-      margin-bottom: 24px;
+      margin-bottom: 0px;
     }
 
     .about .btn-dark {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #fff;
-      color: #000;
+      background: #85020a;
+      color: #fff;
       border: none;
       padding: 13px 28px;
       border-radius: 50px;
@@ -444,14 +444,14 @@
     }
 
     .about .btn-dark:hover {
-      background: #e0e0e0;
+      background: #a30310;
       transform: translateY(-1px);
     }
 
     /* ─── PROJECTS ─── */
     .projects-section {
       background: var(--off-white);
-      padding: 60px 24px 20px;
+      padding: 60px 100px 20px;
     }
 
     .section-header {
@@ -495,7 +495,7 @@
 
     .projects-subtitle {
       font-family: var(--font-display);
-      font-size: 44px;
+      font-size: 35px;
       font-weight: 300;
       letter-spacing: -2px;
       margin-right: 0;
@@ -514,7 +514,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 4px;
-      padding-left: 80px;
+      padding-left: 30px;
     }
 
 
@@ -551,7 +551,7 @@
 
     .project-card {
       background: #000;
-      border: 10px solid #000;
+      border: 4px solid #000;
       border-radius: 32px;
       padding: 30px 36px;
       display: flex;
@@ -601,7 +601,7 @@
     .card-right {
       flex: 1;
       background: #fff;
-      border-radius: 10px 30px 30px 10px;
+      border-radius: 30px;
       padding: 20px 24px;
       border: none;
       margin: -30px -36px -30px -50px;
@@ -767,8 +767,8 @@
     }
 
     .exp-logo {
-      width: 76px;
-      height: 76px;
+      width: 96px;
+      height: 96px;
       border-radius: 14px;
       flex-shrink: 0;
       overflow: hidden;
@@ -883,14 +883,14 @@
       justify-content: space-between;
       gap: 24px;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: default;
     }
 
     .exp-card:hover {
       transform: scale(1.03) translateY(-6px);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35),
-                  0 8px 20px rgba(0, 0, 0, 0.2);
+        0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     .exp-card-text {
@@ -950,7 +950,7 @@
 
     .exp-role {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 20px;
       font-weight: 700;
       color: #fff;
       letter-spacing: -0.3px;
@@ -959,14 +959,14 @@
     }
 
     .exp-org {
-      font-size: 14px;
+      font-size: 16px;
       color: rgba(255, 255, 255, 0.65);
       margin-bottom: 3px;
       font-weight: 400;
     }
 
     .exp-meta {
-      font-size: 13px;
+      font-size: 14.5px;
       color: rgba(255, 255, 255, 0.35);
       margin-bottom: 2px;
       line-height: 1.5;
@@ -1192,7 +1192,7 @@
       margin: 64px auto 0;
       padding-top: 28px;
       border-top: 1px solid rgba(255, 255, 255, 0.07);
-      font-size: 11.5px;
+      font-size: 14px;
       color: rgba(255, 255, 255, 0.2);
       letter-spacing: 0.3px;
     }
@@ -1216,13 +1216,16 @@
       align-items: flex-start;
       gap: 6px;
     }
+
     .suvidha-card-info .suvidha-role {
       order: 1;
     }
+
     .suvidha-card-info .suvidha-org {
       order: 2;
       width: auto;
     }
+
     .suvidha-card-info .suvidha-cert-btn {
       order: 3;
       margin-top: 2px;
@@ -1291,7 +1294,7 @@
       /* ── About ── */
       .about {
         grid-template-columns: 1fr;
-        padding: 48px 24px;
+        padding: 48px 24px 15px 24px;
         gap: 32px;
         text-align: center;
         align-items: center;
@@ -1325,13 +1328,13 @@
 
       /* ── Projects ── */
       .projects-section {
-        padding: 64px 24px 20px;
+        padding: 64px 24px 60px;
       }
 
       .section-header {
         text-align: center;
         align-items: center;
-        padding: 60px 24px 10px;
+        padding: 60px 24px 24px;
       }
 
       .section-title {
@@ -1425,6 +1428,23 @@
         text-align: center;
       }
 
+      .exp-logo {
+        width: 76px;
+        height: 76px;
+      }
+
+      .exp-role {
+        font-size: 17px;
+      }
+
+      .exp-org {
+        font-size: 14px;
+      }
+
+      .exp-meta {
+        font-size: 13px;
+      }
+
       .exp-content {
         text-align: center;
       }
@@ -1485,13 +1505,17 @@
       }
 
       /* ── Experience card inner row stacking ── */
-      .exp-card .exp-card-info > div[style] {
+      .exp-card .exp-card-info>div[style] {
         flex-wrap: wrap;
         gap: 8px;
       }
 
       .exp-grid {
-        gap: 48px;
+        gap: 80px;
+      }
+
+      .roles-section-container {
+        margin-top: 40px;
       }
 
       /* ── Certificates section ── */
@@ -1525,6 +1549,7 @@
         flex-direction: column;
         gap: 8px;
         text-align: center;
+        font-size: 11.5px;
       }
     }
 
@@ -1684,6 +1709,19 @@
 
         Outside of models and notebooks, I lead technical infrastructure as Event Technologist Head for the ACM CSE
         Student Chapter, because good engineering is as much about systems thinking as it is about code.</p>
+
+      <a href="resume.png" target="_blank" class="btn-dark"
+        style="margin-top: 10px; text-decoration: none; align-self: flex-start;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        View Resume
+      </a>
     </div>
   </section>
 
@@ -1694,125 +1732,125 @@
       <p class="section-subtitle projects-subtitle">experimenting tech.</p>
     </div>
 
-    <div class="projects-carousel-container reveal">
-      <div class="projects-track">
-        <a href="https://github.com/guradeshdhillon/CreditWise-AI" target="_blank" rel="noopener noreferrer"
-          class="project-card">
-          <div class="card-left">
-            <p class="card-num">FEB 2026</p>
-            <h3 class="card-title">CreditWise AI</h3>
-            <p class="card-sub">Loan Approval Intelligence Platform</p>
+    <!-- <div class="projects-carousel-container reveal"> -->
+    <div class="projects-track">
+      <a href="https://github.com/guradeshdhillon/CreditWise-AI" target="_blank" rel="noopener noreferrer"
+        class="project-card">
+        <div class="card-left">
+          <p class="card-num">FEB 2026</p>
+          <h3 class="card-title">CreditWise AI</h3>
+          <p class="card-sub">Loan Approval Intelligence Platform</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost
+            model
+            with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend,
+            three
+            interactive web dashboards for assessment, what-if analysis, and fairness auditing, plus PDF report
+            generation, MLflow experiment tracking, and Docker deployment.</p>
+          <div class="card-tags">
+            <span class="card-tag">Python</span>
+            <span class="card-tag">Scikit-learn</span>
+            <span class="card-tag">Pandas</span>
+            <span class="card-tag">NumPy</span>
+            <span class="card-tag">XGBoost</span>
+            <span class="card-tag">FastAPI</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">An end-to-end loan approval prediction platform powered by an Optuna-tuned XGBoost
-              model
-              with SHAP explainability and Claude AI-generated decision explanations. Built with a FastAPI backend,
-              three
-              interactive web dashboards for assessment, what-if analysis, and fairness auditing, plus PDF report
-              generation, MLflow experiment tracking, and Docker deployment.</p>
-            <div class="card-tags">
-              <span class="card-tag">Python</span>
-              <span class="card-tag">Scikit-learn</span>
-              <span class="card-tag">Pandas</span>
-              <span class="card-tag">NumPy</span>
-              <span class="card-tag">XGBoost</span>
-              <span class="card-tag">FastAPI</span>
-            </div>
-          </div>
-        </a>
+        </div>
+      </a>
 
-        <a href="https://github.com/guradeshdhillon/Customer-Segmentation-Pipeline" target="_blank"
-          rel="noopener noreferrer" class="project-card">
-          <div class="card-left">
-            <p class="card-num">MAR 2026</p>
-            <h3 class="card-title">RetailScope</h3>
-            <p class="card-sub">Unsupervised ML &middot; Customer Segmentation</p>
+      <a href="https://github.com/guradeshdhillon/Customer-Segmentation-Pipeline" target="_blank"
+        rel="noopener noreferrer" class="project-card">
+        <div class="card-left">
+          <p class="card-num">MAR 2026</p>
+          <h3 class="card-title">RetailScope</h3>
+          <p class="card-sub">Unsupervised ML &middot; Customer Segmentation</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">Customer segmentation pipeline using KMeans and Agglomerative Clustering. PCA-based 2D
+            visualisation, Elbow Method, and Silhouette scoring for optimal cluster selection from retail transaction
+            data.</p>
+          <div class="card-tags">
+            <span class="card-tag">KMeans</span>
+            <span class="card-tag">PCA</span>
+            <span class="card-tag">Seaborn</span>
+            <span class="card-tag">Scikit-learn</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">Customer segmentation pipeline using KMeans and Agglomerative Clustering. PCA-based 2D
-              visualisation, Elbow Method, and Silhouette scoring for optimal cluster selection from retail transaction
-              data.</p>
-            <div class="card-tags">
-              <span class="card-tag">KMeans</span>
-              <span class="card-tag">PCA</span>
-              <span class="card-tag">Seaborn</span>
-              <span class="card-tag">Scikit-learn</span>
-            </div>
-          </div>
-        </a>
+        </div>
+      </a>
 
-        <a href="https://github.com/guradeshdhillon/food-grub-user" target="_blank" rel="noopener noreferrer"
-          class="project-card">
-          <div class="card-left">
-            <p class="card-num">SEP–DEC 2024</p>
-            <h3 class="card-title">Grub</h3>
-            <p class="card-sub">Mobile App &middot; Android</p>
+      <a href="https://github.com/guradeshdhillon/food-grub-user" target="_blank" rel="noopener noreferrer"
+        class="project-card">
+        <div class="card-left">
+          <p class="card-num">SEP–DEC 2024</p>
+          <h3 class="card-title">Grub</h3>
+          <p class="card-sub">Mobile App &middot; Android</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">Native Android canteen pre-ordering system with student-facing interface and a vendor
+            dashboard for real-time demand forecasting and order management — eliminating canteen queues entirely.</p>
+          <div class="card-tags">
+            <span class="card-tag">Kotlin</span>
+            <span class="card-tag">Android SDK</span>
+            <span class="card-tag">XML</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">Native Android canteen pre-ordering system with student-facing interface and a vendor
-              dashboard for real-time demand forecasting and order management — eliminating canteen queues entirely.</p>
-            <div class="card-tags">
-              <span class="card-tag">Kotlin</span>
-              <span class="card-tag">Android SDK</span>
-              <span class="card-tag">XML</span>
-            </div>
-          </div>
-        </a>
+        </div>
+      </a>
 
-        <a href="https://github.com/guradeshdhillon/chapel-hymnal" target="_blank" rel="noopener noreferrer"
-          class="project-card">
-          <div class="card-left">
-            <p class="card-num">FEB–MAY 2025</p>
-            <h3 class="card-title">Forage-Midas</h3>
-            <p class="card-sub">Full-Stack &middot; Sustainability Platform</p>
+      <a href="https://github.com/guradeshdhillon/chapel-hymnal" target="_blank" rel="noopener noreferrer"
+        class="project-card">
+        <div class="card-left">
+          <p class="card-num">FEB–MAY 2025</p>
+          <h3 class="card-title">Forage-Midas</h3>
+          <p class="card-sub">Full-Stack &middot; Sustainability Platform</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">Waste management portal with real-time inventory tracking connecting food donors with
+            local organisations, reducing food waste through a clean full-stack web interface.</p>
+          <div class="card-tags">
+            <span class="card-tag">Full-Stack</span>
+            <span class="card-tag">Web Dev</span>
+            <span class="card-tag">Real-time</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">Waste management portal with real-time inventory tracking connecting food donors with
-              local organisations, reducing food waste through a clean full-stack web interface.</p>
-            <div class="card-tags">
-              <span class="card-tag">Full-Stack</span>
-              <span class="card-tag">Web Dev</span>
-              <span class="card-tag">Real-time</span>
-            </div>
-          </div>
-        </a>
+        </div>
+      </a>
 
-        <a href="https://github.com/guradeshdhillon/digital_profile" target="_blank" rel="noopener noreferrer"
-          class="project-card">
-          <div class="card-left">
-            <p class="card-num">2025</p>
-            <h3 class="card-title">Digital Portfolio App</h3>
-            <p class="card-sub">Mobile App &middot; Full-Stack Android</p>
+      <a href="https://github.com/guradeshdhillon/digital_profile" target="_blank" rel="noopener noreferrer"
+        class="project-card">
+        <div class="card-left">
+          <p class="card-num">2025</p>
+          <h3 class="card-title">Digital Portfolio App</h3>
+          <p class="card-sub">Mobile App &middot; Full-Stack Android</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">Full-stack Android portfolio application with SQLite-backed certification management
+            (full CRUD), SharedPreferences persistence, dynamic dark theme, and multi-screen navigation.</p>
+          <div class="card-tags">
+            <span class="card-tag">Java</span>
+            <span class="card-tag">SQLite</span>
+            <span class="card-tag">Android SDK</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">Full-stack Android portfolio application with SQLite-backed certification management
-              (full CRUD), SharedPreferences persistence, dynamic dark theme, and multi-screen navigation.</p>
-            <div class="card-tags">
-              <span class="card-tag">Java</span>
-              <span class="card-tag">SQLite</span>
-              <span class="card-tag">Android SDK</span>
-            </div>
-          </div>
-        </a>
+        </div>
+      </a>
 
-        <a href="https://github.com/guradeshdhillon/ei-svpcet" target="_blank" rel="noopener noreferrer"
-          class="project-card">
-          <div class="card-left">
-            <p class="card-num">SEP–DEC 2025</p>
-            <h3 class="card-title">Engineering India</h3>
-            <p class="card-sub">Web &middot; Club Website</p>
+      <a href="https://github.com/guradeshdhillon/ei-svpcet" target="_blank" rel="noopener noreferrer"
+        class="project-card">
+        <div class="card-left">
+          <p class="card-num">SEP–DEC 2025</p>
+          <h3 class="card-title">Engineering India</h3>
+          <p class="card-sub">Web &middot; Club Website</p>
+        </div>
+        <div class="card-right">
+          <p class="card-desc">Conceptualised and launched SVPCET's first official Engineering India club website — a
+            central hub for technical news, events, and competition registrations for the student community.</p>
+          <div class="card-tags">
+            <span class="card-tag">Web Dev</span>
+            <span class="card-tag">UI/UX</span>
           </div>
-          <div class="card-right">
-            <p class="card-desc">Conceptualised and launched SVPCET's first official Engineering India club website — a
-              central hub for technical news, events, and competition registrations for the student community.</p>
-            <div class="card-tags">
-              <span class="card-tag">Web Dev</span>
-              <span class="card-tag">UI/UX</span>
-            </div>
-          </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
+    <!-- </div> -->
   </section>
 
   <!-- SKILLS -->
@@ -2036,7 +2074,8 @@
             </div>
 
             <div class="cert-card-wrapper">
-              <a href="certificate/Guradesh Dhillon - Intermediate Machine Learning.png" target="_blank" class="cert-card">
+              <a href="certificate/Guradesh Dhillon - Intermediate Machine Learning.png" target="_blank"
+                class="cert-card">
                 <img src="certificate/Guradesh Dhillon - Intermediate Machine Learning.png"
                   alt="Kaggle Intermediate Machine Learning Certificate" class="cert-card-img">
                 <div class="cert-card-label">
@@ -2089,9 +2128,10 @@
                   </div>
                   <div class="exp-card-meta-right">
                     <p class="exp-meta">Oct &ndash; Dec 2025 &middot; 10 weeks</p>
-                    <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                    <p class="exp-meta">Remote</p>
                   </div>
-                  <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank" class="view-cert-btn">
+                  <a href="internship-certificate/Screenshot 2026-06-17 182702.png" target="_blank"
+                    class="view-cert-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                       style="margin-right: 4px;">
@@ -2112,7 +2152,8 @@
               <div class="timeline-bullet"></div>
               <div class="timeline-content">
                 <div class="exp-card" style="flex-direction: column; align-items: stretch; gap: 0;">
-                  <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; column-gap: 24px; row-gap: 5px;">
+                  <div
+                    style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; column-gap: 24px; row-gap: 5px;">
                     <div class="exp-card-info suvidha-card-info">
                       <p class="exp-role suvidha-role" style="margin: 0;">Artificial Intelligence Intern</p>
                       <a href="internship-certificate/Suvidha Foundation Internship Certificate.jpeg" target="_blank"
@@ -2128,34 +2169,45 @@
                         </svg>
                         View Certificate ↗
                       </a>
-                      <p class="exp-org suvidha-org" style="margin-bottom: 0;">Suvidha Foundation &middot; Internship</p>
+                      <p class="exp-org suvidha-org" style="margin-bottom: 0;">Suvidha Foundation &middot; Internship
+                      </p>
                     </div>
                     <div class="exp-card-meta-right">
-                      <p class="exp-meta">Jun 2026 &middot; 1 mo</p>
-                      <p class="exp-meta">Nagpur, Maharashtra, India &middot; Remote</p>
+                      <p class="exp-meta">Jun 2026 &middot; 1 month</p>
+                      <p class="exp-meta">Remote</p>
                     </div>
                   </div>
                   <div class="exp-desc" style="margin-top: 5px; padding-top: 0; max-width: 100%;">
-                    <p style="font-size:12px; color:#85020a; margin-bottom:6px; letter-spacing:0.2px; font-style:italic;">
-                      <strong style="color:#85020a;">DentalSeg AI</strong> - Two-Stage Tooth Instance Segmentation Platform &middot; HealthTech, Computer Vision<br>
-                      <span style="color:#85020a;">Python &middot; PyTorch &middot; YOLOv8-Seg &middot; SAM2 &middot; Label Studio &middot; COCO</span>
+                    <p
+                      style="font-size:12px; color:#85020a; margin-bottom:6px; letter-spacing:0.2px; font-style:italic;">
+                      <strong style="color:#85020a;">DentalSeg AI</strong> - Two-Stage Tooth Instance Segmentation
+                      Platform &middot; HealthTech, Computer Vision<br>
+                      <span style="color:#85020a;">Python &middot; PyTorch &middot; YOLOv8-Seg &middot; SAM2 &middot;
+                        Label Studio &middot; COCO</span>
                     </p>
                     <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;">
                       <li style="font-size:13px; color:#000; line-height:1.6; padding-left:14px; position:relative;">
                         <span style="position:absolute; left:0; color:#000;">•</span>
-                        Configured and deployed a local Label Studio annotation server, resolving environment/pathing issues to build a stable data-labeling pipeline.
+                        Configured and deployed a local Label Studio annotation server, resolving environment/pathing
+                        issues to build a stable data-labeling pipeline.
                       </li>
                       <li style="font-size:13px; color:#000; line-height:1.6; padding-left:14px; position:relative;">
                         <span style="position:absolute; left:0; color:#000;">•</span>
-                        Curated a clinical dataset of standardized 5-view intraoral photographs and performed high-precision instance-segmentation polygon masking, then structured and exported it into COCO JSON format the same data foundation used by clear-aligner tracking platforms.
+                        Curated a clinical dataset of standardized 5-view intraoral photographs and performed
+                        high-precision instance-segmentation polygon masking, then structured and exported it into COCO
+                        JSON format the same data foundation used by clear-aligner tracking platforms.
                       </li>
                       <li style="font-size:13px; color:#000; line-height:1.6; padding-left:14px; position:relative;">
                         <span style="position:absolute; left:0; color:#000;">•</span>
-                        Extended the internship's annotation pipeline into a two-stage deep learning system: a YOLOv8-Seg model for Stage 1 tooth instance detection/segmentation, and a rule-based FDI tooth-numbering engine for Stage 2 clinical labeling.
+                        Extended the internship's annotation pipeline into a two-stage deep learning system: a
+                        YOLOv8-Seg model for Stage 1 tooth instance detection/segmentation, and a rule-based FDI
+                        tooth-numbering engine for Stage 2 clinical labeling.
                       </li>
                       <li style="font-size:13px; color:#000; line-height:1.6; padding-left:14px; position:relative;">
                         <span style="position:absolute; left:0; color:#000;">•</span>
-                        Generating high-quality instance masks via SAM2 pseudo-labeling on Colab, training on a stratified subset of the Zenodo intraoral dataset; iterating locally on a GTX 1650 (4GB VRAM) with Colab T4 for heavier runs.
+                        Generating high-quality instance masks via SAM2 pseudo-labeling on Colab, training on a
+                        stratified subset of the Zenodo intraoral dataset; iterating locally on a GTX 1650 (4GB VRAM)
+                        with Colab T4 for heavier runs.
                       </li>
                     </ul>
                   </div>
@@ -2167,7 +2219,7 @@
         </div>
 
         <!-- Roles below -->
-        <div class="reveal">
+        <div class="reveal roles-section-container">
           <h2 class="exp-col-title">Roles</h2>
           <div class="roles-row">
 
@@ -2179,8 +2231,9 @@
               <div class="exp-content">
                 <p class="exp-role">Event Technologist Head</p>
                 <p class="exp-org">ACM, Association for Computing Machinery</p>
-                <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
-                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+                <p class="exp-meta">Aug 2025 &ndash; Present &middot; <span class="dynamic-duration"
+                    data-start="2025-08-01">11 mos</span></p>
+
               </div>
             </div>
 
@@ -2192,8 +2245,9 @@
               <div class="exp-content">
                 <p class="exp-role">Software Application Developer</p>
                 <p class="exp-org">Unnat Bharat Abhiyan &middot; Full-time</p>
-                <p class="exp-meta">Aug 2025 &ndash; Present &middot; 11 mos</p>
-                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+                <p class="exp-meta">Aug 2025 &ndash; Present &middot; <span class="dynamic-duration"
+                    data-start="2025-08-01">11 mos</span></p>
+
               </div>
             </div>
 
@@ -2205,8 +2259,8 @@
               <div class="exp-content">
                 <p class="exp-role">Management Team Member</p>
                 <p class="exp-org">ENGINEERING INDIA</p>
-                <p class="exp-meta">Aug 2024 &ndash; Present &middot; 1 yr 11 mos</p>
-                <p class="exp-meta">Nagpur, Maharashtra, India</p>
+                <p class="exp-meta">Aug 2024 &ndash; Aug 2025 &middot; 1 yr</p>
+
               </div>
             </div>
 
@@ -2271,7 +2325,7 @@
     </div>
     <div class="footer-sep">
       <span>&copy; 2026 Guradesh Dhillon</span>
-      <span>Nagpur, Maharashtra &nbsp;&middot;&nbsp; SVPCET &nbsp;&middot;&nbsp; AI &amp; Data Science</span>
+      <span>India &nbsp;&middot;&nbsp; SVPCET &nbsp;&middot;&nbsp; AI/ML</span>
     </div>
   </footer>
 
@@ -2286,6 +2340,37 @@
     // Layout is static. No carousel script is required as layout transitions are handled purely by CSS.
   </script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const durationElements = document.querySelectorAll('.dynamic-duration');
+
+      durationElements.forEach(el => {
+        const startStr = el.getAttribute('data-start');
+        if (!startStr) return;
+
+        const startDate = new Date(startStr);
+        const endDate = new Date();
+
+        let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+        months += endDate.getMonth() - startDate.getMonth();
+        months += 1; // Inclusive of starting month
+
+        let years = Math.floor(months / 12);
+        let remainingMonths = months % 12;
+
+        let durationStr = "";
+        if (years > 0) {
+          durationStr += years + (years === 1 ? " yr" : " yrs");
+          if (remainingMonths > 0) durationStr += " ";
+        }
+        if (remainingMonths > 0 || years === 0) {
+          durationStr += remainingMonths + (remainingMonths === 1 ? " mo" : " mos");
+        }
+
+        el.textContent = durationStr.trim();
+      });
+    });
+  </script>
 </body>
 
 </html>
